@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recettes - Mon carnet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/recettes.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="brand">Mon Carnet de Recettes</div>
+    <button id="menu-toggle" class="menu-btn">☰</button>
+    <nav id="main-menu" class="main-menu">
+      <ul>
+        <li><a href="#entrees">Entrées</a></li>
+        <li><a href="#plats">Plats</a></li>
+        <li><a href="#desserts">Desserts</a></li>
+        <li><a href="#autres">Autres</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <input id="search" type="search" placeholder="Recherche (titre, ingrédient...)" aria-label="Recherche">
+      <div class="filters">
+
+        <div class="filter-block">
+          <div class="filter-header">
+            <label>
+              <input type="checkbox" class="filter-group" data-group="viande" checked> Viandes
+            </label>
+            <button type="button" class="toggle-subfilters">+</button>
+          </div>
+          <div class="sub-filters hidden">
+            <label><input type="checkbox" class="filter" data-parent="viande" value="poulet" checked> Poulet</label>
+            <label><input type="checkbox" class="filter" data-parent="viande" value="boeuf" checked> Bœuf</label>
+            <label><input type="checkbox" class="filter" data-parent="viande" value="canard" checked> Canard</label>
+            <label><input type="checkbox" class="filter" data-parent="viande" value="porc" checked> Porc</label>
+            <label><input type="checkbox" class="filter" data-parent="viande" value="veau" checked> Veau</label>
+          </div>
+        </div>
+
+        <div class="filter-block">
+          <div class="filter-header">
+            <label>
+              <input type="checkbox" class="filter-group" data-group="poisson" checked> Poissons
+            </label>
+            <button type="button" class="toggle-subfilters">+</button>
+          </div>
+          <div class="sub-filters hidden">
+            <label><input type="checkbox" class="filter" data-parent="poisson" value="saumon" checked> Saumon</label>
+            <label><input type="checkbox" class="filter" data-parent="poisson" value="thon" checked> Thon</label>
+          </div>
+        </div>
+        <div class="filter-block">
+          <div class="filter-header">
+            <label>
+              <input type="checkbox" class="filter-group" data-group="legume" checked> Légumes
+            </label>
+            <button type="button" class="toggle-subfilters">+</button>
+          </div>
+          <div class="sub-filters hidden">
+            <label><input type="checkbox" class="filter" data-parent="legume" value="courgette" checked> Courgette</label>
+            <label><input type="checkbox" class="filter" data-parent="legume" value="tomate" checked> Tomate</label>
+            <label><input type="checkbox" class="filter" data-parent="legume" value="concombre" checked> Concombre</label>
+          </div>
+        </div>
+        <div class="filter-block">
+          <div class="filter-header">
+            <label>
+              <input type="checkbox" class="filter-group" data-group="feculent" checked> Féculents
+            </label>
+            <button type="button" class="toggle-subfilters">+</button>
+          </div>
+          <div class="sub-filters hidden">
+            <label><input type="checkbox" class="filter" data-parent="feculent" value="patate" checked> Patate</label>
+            <label><input type="checkbox" class="filter" data-parent="feculent" value="riz" checked> Riz</label>
+            <label><input type="checkbox" class="filter" data-parent="feculent" value="pate" checked> Pâtes</label>
+            <label><input type="checkbox" class="filter" data-parent="feculent" value="quinoa" checked> Quinoa</label>
+            <label><input type="checkbox" class="filter" data-parent="feculent" value="semoule" checked> Semoule</label>
+            <label><input type="checkbox" class="filter" data-parent="feculent" value="boulgour" checked> Boulgour</label>
+          </div>
+    </section>
+
+    <section id="liste-recettes" class="recette-list">
+      <article class="card" data-categories="viande,poulet,patate" data-title="Poulet rôti et pomme de terre au four"
+        data-ingredients="poulet,sel,poivre,herbes">
+        <a href="recettes/poulet-patates.html" class="card-link">
+          <!--image pouvant être en jpg, jpeg ou png-->
+          <img src="assets/poulet-patates.jpg" alt="Photo poulet rôti et patates au four">
+          <div class="card-body">
+            <h3>Poulet mariné et patates au four</h3>
+            <p>Avec une sauce miam miam miam.</p>
+          </div>
+        </a>
+      </article>
+      <article class="card" data-categories="poisson,saumon,patate, tomate" data-title="Saumon grillé et pomme de terre au four"
+        data-ingredients="saumon,sel,poivre,herbes">
+        <a href="recettes/saumon-patates.html" class="card-link">
+          <img src="assets/saumon-patates.jpg" alt="Photo saumon grillé et patates au four">
+          <div class="card-body">
+            <h3>Saumon grillé et patates au four</h3>
+            <p>Avec sa sauce au beurre citronné</p>
+          </div>
+        </a>
+      </article>
+      <!-- Place pour d'autres recettes à dupliquer -->
+    </section>
+  </main>
+
+  <footer class="site-footer">© Mon Carnet — Toutes les recettes en français</footer>
+
+  <script src="js/menu.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/filter.js"></script>
+</body>
+
+</html>

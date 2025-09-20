@@ -1,0 +1,22 @@
+/* menu.css */
+.main-menu ul{
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  gap:12px;
+  align-items:center;
+}
+
+.main-menu a{
+  text-decoration:none;
+  color:var(--muted);
+  padding:8px 10px;
+  border-radius:8px;
+  transition:background .12s ease;
+}
+
+.main-menu a:hover{
+  background: rgba(255,255,255,0.03);
+  color:var(--accent1);
+}
