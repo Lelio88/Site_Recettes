@@ -1,48 +1,25 @@
 /* search.js */
 document.addEventListener('DOMContentLoaded', function () {
-  var checkboxes = Array.from(document.querySelectorAll('.filter'));
-  var groups = Array.from(document.querySelectorAll('.filter-group'));
+  var input = document.getElementById('search');
   var cards = Array.from(document.querySelectorAll('.recette-list .card'));
 
-  function getActiveFilters() {
-    return checkboxes
-      .filter(cb => cb.checked)
-      .map(cb => cb.value);
-  }
+  if (!input) return;
 
-  function applyFilters() {
-    var active = getActiveFilters();
+  function applySearch() {
+    var query = input.value.toLowerCase().trim();
     cards.forEach(function (card) {
-      var cats = (card.dataset.categories || '')
-        .split(',')
-        .map(s => s.trim());
-      var match = cats.some(c => active.indexOf(c) !== -1);
+      if (!query) {
+        card.dataset.searchHidden = '';
+        card.style.display = '';
+        return;
+      }
+      var title = (card.dataset.title || '').toLowerCase();
+      var ingredients = (card.dataset.ingredients || '').toLowerCase();
+      var match = title.includes(query) || ingredients.includes(query);
+      card.dataset.searchHidden = match ? '' : 'true';
       card.style.display = match ? '' : 'none';
     });
   }
 
-  // Gérer relation parent -> enfants
-  groups.forEach(group => {
-    group.addEventListener('change', function () {
-      let children = checkboxes.filter(cb => cb.dataset.parent === group.dataset.group);
-      children.forEach(cb => cb.checked = group.checked);
-      applyFilters();
-    });
-  });
-
-  // Gérer relation enfants -> parent (si tous décochés, décocher parent)
-  checkboxes.forEach(cb => {
-    cb.addEventListener('change', function () {
-      let parentName = cb.dataset.parent;
-      let parentGroup = document.querySelector(`.filter-group[data-group="${parentName}"]`);
-      if (parentGroup) {
-        let siblings = checkboxes.filter(c => c.dataset.parent === parentName);
-        parentGroup.checked = siblings.every(c => c.checked);
-      }
-      applyFilters();
-    });
-  });
-
-  applyFilters();
   input.addEventListener('input', applySearch);
 });
