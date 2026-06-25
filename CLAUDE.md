@@ -25,11 +25,11 @@ Topologie rapide :
 *Aucun gestionnaire de dépendances. N'introduisez aucun framework ou bundler sans approbation.*
 
 - **Langages** : HTML5, CSS3 (custom properties, Grid, Flexbox), JavaScript ES6+ vanilla
-- **Design** : thème sombre, glassmorphism, palette via CSS custom properties
+- **Design** : **thème clair « doux »** (crème chaud, arrondis généreux, ombres diffuses, halos pêche), police **Nunito** (Google Fonts), palette via CSS custom properties dérivée du seed orange `#E8590C` de l'app
 
 ## IV. Garde-Fous non négociables
 
-1. **Zéro dépendance** — pas de npm, bundler ou framework JS. Tout est vanilla
+1. **Zéro dépendance JS** — pas de npm, bundler ou framework JS. Tout est vanilla. Seule ressource externe tolérée : la police **Nunito** via Google Fonts (`<link>` dans le `<head>`)
 2. **Pas de JavaScript inline** — tout le JS réside dans `js/`
 3. **Data-attributes comme contrat** — les cartes utilisent `data-categories`, `data-title`, `data-ingredients` pour le filtrage ; ne pas altérer cette interface
 4. **Responsive obligatoire** — toute modification visuelle doit fonctionner à 320px et 1440px
@@ -64,5 +64,5 @@ xdg-open index.html      # Linux
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : correctifs + unification DA. Recherche et filtres se **combinent** désormais (logique AND via drapeaux `data-search-hidden`/`data-filter-hidden` lus par `js/visibility.js` ; ne jamais écrire `card.style.display` directement, passer par `updateCardVisibility`). Contraste des filtres réparé (header sombre), overflow 320px corrigé (`flex-wrap`), bouton PDF réparé (`--primary`), focus-visible + ARIA ajoutés. **Tokens CSS de rôle** (`:root` de `style.css`) alignés sur le seed orange `#E8590C` de l'app LLMarmite — DA unifiée, site sombre conservé.
-- **Focus immédiat** : (optionnel) revoir la sémantique du filtrage par groupe (logique OR actuelle : décocher une protéine ne masque pas une carte tant qu'un féculent reste coché).
+- **Dernier focus** : **refonte « douce »** du design — passage d'un thème sombre/navy à un **thème clair crème chaud** (arrondis généreux, ombres diffuses, halos pêche, police **Nunito**, hero d'accueil). Tokens `:root` de `style.css` dérivés du seed orange `#E8590C` (aligné avec l'app LLMarmite, claire des deux côtés). Recherche+filtres combinés via `js/visibility.js` (ne jamais écrire `card.style.display` directement → `updateCardVisibility`). Favicon marmite. Vérifié : zéro overflow à 320px. Contrat de publication intact (classes/`data-*`/marqueur `#liste-recettes` inchangés).
+- **Focus immédiat** : (optionnel) revoir la sémantique du filtrage par groupe (logique OR : décocher une protéine ne masque pas une carte tant qu'un féculent reste coché).

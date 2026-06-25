@@ -1,22 +1,12 @@
-/* menu.css */
+/* menu.css — navigation douce */
 .main-menu ul{
-  list-style:none;
-  margin:0;
-  padding:0;
-  display:flex;
-  gap:12px;
-  align-items:center;
+  list-style:none; margin:0; padding:0;
+  display:flex; gap:8px; align-items:center;
 }
-
 .main-menu a{
-  text-decoration:none;
-  color:var(--muted);
-  padding:8px 10px;
-  border-radius:8px;
-  transition:background .12s ease;
+  text-decoration:none; color:var(--color-on-surface);
+  padding:9px 16px; border-radius:var(--radius-pill);
+  font-weight:700; font-size:.95rem;
+  transition:background .2s ease, color .2s ease;
 }
-
-.main-menu a:hover{
-  background: rgba(255,255,255,0.03);
-  color:var(--accent1);
-}
+.main-menu a:hover{ background:var(--color-peach); color:var(--color-primary); }

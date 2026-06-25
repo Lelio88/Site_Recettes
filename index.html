@@ -6,14 +6,17 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Recettes - Mon carnet</title>
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/recettes.css">
 </head>
 
 <body>
-  <header class="site-header">
-    <h1 class="brand">Mon Carnet de Recettes</h1>
+  <header class="site-header" id="top">
+    <a class="brand" href="#top">Mon Carnet</a>
     <button id="menu-toggle" class="menu-btn" aria-label="Ouvrir le menu" aria-controls="main-menu" aria-expanded="false">☰</button>
     <nav id="main-menu" class="main-menu" aria-label="Navigation principale">
       <ul>
@@ -23,6 +26,10 @@
   </header>
 
   <main class="container">
+    <section class="hero">
+      <h1>Mon Carnet de Recettes</h1>
+      <p>Tes recettes maison préférées, à filtrer par ingrédient et à cuisiner tranquille.</p>
+    </section>
     <section class="controls">
       <input id="search" type="search" placeholder="Recherche (titre, ingrédient...)" aria-label="Recherche">
       <div class="filters">

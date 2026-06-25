@@ -1,193 +1,171 @@
-/* style.css - style global */
+/* style.css — Direction artistique « douce » (soft light, marmite)
+   Clair, chaud, arrondi, aéré. Dérivé du seed orange #E8590C de l'app LLMarmite.
+   La police Nunito est chargée via <link> dans le <head> des pages. */
 :root{
-  /* === Tokens de marque — unifiés avec l'app LLMarmite (seed orange #E8590C) ===
-     Source de vérité : ces rôles sont projetés côté Flutter via ColorScheme.fromSeed.
-     Le site reste sombre ; l'accent passe sur l'orange de l'app. */
-  --color-primary:        #E8590C;   /* orange seed (app) — marque, CTA, accents */
-  --color-primary-hover:  #ff6b1f;   /* survol CTA */
-  --color-primary-soft:   #ffb86b;   /* teinte chaude claire — titres, liens survol */
-  --color-on-primary:     #ffffff;   /* texte sur orange */
+  /* === Accents (orange marmite) === */
+  --color-primary:        #E8590C;   /* orange marque — CTA, accents forts */
+  --color-primary-strong: #c9490a;   /* survol CTA */
+  --color-primary-soft:   #f7a977;   /* orange doux — survols, focus */
+  --color-on-primary:     #ffffff;
+  --color-peach:          #ffe6d2;   /* pêche très clair — halos, chips */
+  --color-peach-deep:     #ffd6ba;
 
-  /* Surfaces sombres CHAUDES (dérivées de l'orange — plus de bleu navy) */
-  --color-bg-top:         #1a120c;
-  --color-bg-bottom:      #221710;
-  --color-surface:        #2b1f17;
-  --color-surface-glass:  rgba(255,255,255,0.05);
-  --color-surface-soft:   rgba(255,255,255,0.02);
-  --color-outline:        rgba(255,255,255,0.10);
+  /* === Surfaces claires et douces === */
+  --color-bg:             #fbf2ea;   /* crème chaud (fond) */
+  --color-bg-2:           #fff8f3;
+  --color-surface:        #ffffff;   /* cartes, panneaux */
+  --color-surface-soft:   #fff4ec;   /* panneaux secondaires */
+  --color-outline:        #f1e2d6;   /* bordures très douces */
 
-  /* Texte chaud (off-white / taupe) */
-  --color-on-surface:        #f4ece4;  /* texte principal */
-  --color-on-surface-muted:  #c8b6a7;  /* texte secondaire */
+  /* === Texte chaud (jamais noir pur) === */
+  --color-on-surface:        #5a4a40;  /* texte courant */
+  --color-on-surface-strong: #36271e;  /* titres */
+  --color-on-surface-muted:  #7c6657;  /* secondaire */
 
-  /* === Alias de compatibilité (anciens noms → rôles) === */
-  --bg: var(--color-surface);
-  --card: var(--color-surface);
-  --accent1: var(--color-primary-soft);
-  --accent2: var(--color-primary-soft);
-  --muted: var(--color-on-surface-muted);
-  --glass: var(--color-surface-glass);
-  --primary: var(--color-primary);   /* répare le CTA .btn (recettes.css) */
+  /* === Ombres douces, diffuses, teintées chaud === */
+  --shadow-sm: 0 2px 12px rgba(124,67,20,0.06);
+  --shadow-md: 0 16px 38px rgba(232,89,12,0.10);
+  --shadow-lg: 0 26px 56px rgba(124,67,20,0.16);
 
-  --radius:14px;
+  --radius:    22px;
+  --radius-sm: 14px;
+  --radius-pill: 999px;
   --gap:18px;
-  --maxw:1100px;
+  --maxw:1080px;
+
+  /* Alias de compatibilité (anciens noms encore référencés ailleurs) */
+  --bg: var(--color-bg);
+  --card: var(--color-surface);
+  --accent1: var(--color-primary);
+  --accent2: var(--color-primary);
+  --muted: var(--color-on-surface-muted);
+  --glass: var(--color-surface-soft);
+  --primary: var(--color-primary);
 }
 
 *{box-sizing:border-box}
-
-/* Accessibilité : repère clavier visible sur thème sombre */
-:focus-visible{
-  outline:2px solid var(--color-primary-soft);
-  outline-offset:2px;
-  border-radius:4px;
-}
-
-/* Cases à cocher à la couleur de marque (orange seed) */
-input[type="checkbox"]{ accent-color: var(--color-primary); }
+html{scroll-behavior:smooth}
 html,body{height:100%}
 body{
   margin:0;
-  font-family:Inter, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:linear-gradient(180deg, var(--color-bg-top) 0%, var(--color-bg-bottom) 100%);
+  font-family:'Nunito', system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   color:var(--color-on-surface);
+  font-size:16.5px;
+  line-height:1.6;
+  background:
+    radial-gradient(1100px 560px at 88% -8%, var(--color-peach) 0%, rgba(255,230,210,0) 55%),
+    radial-gradient(820px 460px at -8% 4%, #ffeada 0%, rgba(255,234,218,0) 52%),
+    linear-gradient(180deg, var(--color-bg-2) 0%, var(--color-bg) 100%);
+  background-attachment:fixed;
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
 
-.container{
-  max-width:var(--maxw);
-  margin:28px auto;
-  padding:0 18px;
-}
+/* Accessibilité : focus doux et visible */
+:focus-visible{ outline:3px solid var(--color-primary-soft); outline-offset:3px; border-radius:12px; }
+input[type="checkbox"]{ accent-color:var(--color-primary); width:17px; height:17px; }
 
+.container{ max-width:var(--maxw); margin:0 auto; padding:0 22px 72px; }
+
+/* ---- En-tête doux (sticky, translucide) ---- */
 .site-header{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 18px;
-  background:linear-gradient(90deg, rgba(232,89,12,0.10), rgba(232,89,12,0.03));
-  border-bottom:1px solid rgba(255,255,255,0.03);
-  position:sticky;
-  top:0;
-  z-index:10;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:16px clamp(18px,4vw,40px);
+  background:rgba(255,248,243,0.72);
+  -webkit-backdrop-filter:saturate(140%) blur(12px);
+  backdrop-filter:saturate(140%) blur(12px);
+  border-bottom:1px solid var(--color-outline);
+  position:sticky; top:0; z-index:20;
 }
-
 .brand{
-  margin:0;
-  font-weight:700;
-  color:var(--accent1);
-  font-size:18px;
+  margin:0; font-weight:800; font-size:20px; letter-spacing:-0.01em;
+  color:var(--color-on-surface-strong); text-decoration:none;
+  display:inline-flex; align-items:center; gap:10px;
 }
+.brand::before{ content:"🍲"; font-size:23px; }
+.menu-btn{ display:none; background:transparent; border:0; color:var(--color-on-surface); font-size:24px; cursor:pointer; line-height:1; }
 
-.menu-btn{
-  display:none;
-  background:transparent;
-  border:0;
-  color:var(--muted);
-  font-size:20px;
+/* ---- Hero doux ---- */
+.hero{ text-align:center; padding:54px 16px 30px; }
+.hero h1{
+  margin:0 0 10px; font-weight:800; letter-spacing:-0.02em;
+  font-size:clamp(2rem, 1.3rem + 3vw, 3.1rem);
+  color:var(--color-on-surface-strong);
 }
+.hero p{ margin:0 auto; max-width:46ch; color:var(--color-on-surface-muted); font-size:1.05rem; }
 
-/* Recette list / cards */
+/* ---- Contrôles (recherche + filtres) ---- */
+.controls{ display:flex; gap:14px; align-items:flex-start; margin-bottom:14px; flex-wrap:wrap; }
+.controls input[type="search"]{
+  flex:1 1 280px; min-width:240px;
+  padding:14px 18px;
+  border-radius:var(--radius-pill);
+  border:1px solid var(--color-outline);
+  background:var(--color-surface);
+  color:var(--color-on-surface);
+  font:inherit; font-size:1rem;
+  box-shadow:var(--shadow-sm);
+  transition:box-shadow .25s ease, border-color .25s ease;
+}
+.controls input[type="search"]::placeholder{ color:var(--color-on-surface-muted); }
+.controls input[type="search"]:focus{ outline:none; border-color:var(--color-primary-soft); box-shadow:var(--shadow-md); }
+
+.filters{ display:flex; flex-wrap:wrap; gap:10px; }
+.filters label{ color:var(--color-on-surface); font-size:.95rem; font-weight:600; }
+
+.filter-block{
+  background:var(--color-surface);
+  border:1px solid var(--color-outline);
+  border-radius:var(--radius-sm);
+  box-shadow:var(--shadow-sm);
+  overflow:hidden; display:flex; flex-direction:column; min-width:130px;
+}
+.filter-header{
+  display:flex; justify-content:space-between; align-items:center; gap:10px;
+  padding:9px 14px; background:var(--color-surface-soft);
+}
+.toggle-subfilters{
+  border:none; background:var(--color-peach); color:var(--color-primary);
+  width:26px; height:26px; border-radius:var(--radius-pill);
+  cursor:pointer; font-size:17px; line-height:1; font-weight:800;
+  display:inline-flex; align-items:center; justify-content:center;
+}
+.sub-filters{ padding:10px 14px; display:flex; flex-wrap:wrap; gap:8px 14px; }
+.sub-filters.hidden{ display:none; }
+.sub-filters label{ font-weight:500; color:var(--color-on-surface); }
+
+/* ---- Grille de cartes ---- */
 .recette-list{
   display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-  gap:18px;
-  margin-top:18px;
+  grid-template-columns:repeat(auto-fill, minmax(260px,1fr));
+  gap:26px; margin-top:26px;
 }
-
 .card{
-  background:linear-gradient(180deg, rgba(255,255,255,0.015), rgba(255,255,255,0.01));
-  border:1px solid rgba(255,255,255,0.03);
-  border-radius:12px;
+  background:var(--color-surface);
+  border:1px solid var(--color-outline);
+  border-radius:var(--radius);
   overflow:hidden;
-  transition:transform .18s ease, box-shadow .18s ease;
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s cubic-bezier(.16,1,.3,1), box-shadow .3s ease;
 }
+.card:hover{ transform:translateY(-8px); box-shadow:var(--shadow-lg); }
+.card-link{ text-decoration:none; color:inherit; display:block; }
+.card img{ width:100%; height:188px; object-fit:cover; display:block; }
+.card-body{ padding:16px 18px 20px; }
+.card-body h3{ margin:0 0 6px; font-size:1.18rem; font-weight:800; color:var(--color-on-surface-strong); letter-spacing:-0.01em; }
+.card-body p{ margin:0; color:var(--color-on-surface-muted); font-size:.95rem; }
 
-.card:hover{ transform: translateY(-6px); box-shadow:0 8px 30px rgba(2,6,23,0.6); }
-
-.card img{ width:100%; height:160px; object-fit:cover; display:block; }
-
-.card-body{ padding:12px 14px; }
-
-.card-body h3{ margin:0 0 6px 0; color:var(--accent2); }
-.card-body p{ margin:0; color: var(--color-on-surface-muted); font-size:14px; }
-
-/* Controls */
-.controls{
-  display:flex;
-  gap:12px;
-  align-items:center;
-  margin-bottom:8px;
-  flex-wrap:wrap;
-}
-
-.controls input[type="search"]{
-  padding:10px 12px;
-  border-radius:10px;
-  border:0;
-  min-width:260px;
-  background:var(--glass);
-  color:var(--color-on-surface);
-}
-
-.filters label{ margin-right:12px; font-size:14px; color:var(--color-on-surface); }
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;        /* si trop long, retour à la ligne */
-  gap: 12px;              /* espace entre chaque bloc */
-}
-
-.filter-block {
-  border: 1px solid var(--color-outline);
-  border-radius: 6px;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;  /* pour que le bouton reste au-dessus des sous-filtres */
-  min-width: 120px;        /* largeur mini pour ne pas tasser */
-}
-
-.filter-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--color-surface-glass);
-  padding: 6px 10px;
-}
-
-.toggle-subfilters {
-  border: none;
-  background: none;
-  color: var(--color-on-surface);
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-}
-
-.sub-filters {
-  padding: 6px 10px;
-  display: flex;
-  flex-wrap: wrap;   /* évite le débordement horizontal à 320px (Féculents = 6 cases) */
-  gap: 6px;
-}
-
-.sub-filters.hidden {
-  display: none;
-}
-
-/* Footer */
+/* ---- Pied de page ---- */
 .site-footer{
-  text-align:center;
-  padding:18px;
-  margin-top:28px;
-  color:var(--color-on-surface-muted);
-  font-size:14px;
+  text-align:center; padding:26px; margin-top:40px;
+  color:var(--color-on-surface-muted); font-size:.92rem;
 }
 
-/* Responsive */
+/* ---- Responsive ---- */
 @media(max-width:700px){
   .menu-btn{ display:block; }
   .main-menu{ display:none; }
   .site-header{ gap:10px; }
+  .hero{ padding:36px 12px 22px; }
+  .recette-list{ gap:18px; }
 }

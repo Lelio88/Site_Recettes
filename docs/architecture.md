@@ -86,19 +86,22 @@ Chaque page dans `recettes/` suit ce template :
 6. `<section class="notes">` (optionnel)
 7. `<section class="telechargement">` avec lien PDF
 
-### Design tokens (DA unifiée avec l'app LLMarmite)
+### Design tokens — thème « doux » (clair)
 
-Couleurs centralisées dans `:root` de `css/style.css`, **nommées par rôle** et dérivées du seed orange `#E8590C` de l'app (source de vérité partagée, projetée aussi en `ColorScheme` Flutter — `mobile/lib/src/theme/app_theme.dart`). Le site reste sombre. Des **alias** rétrocompatibles (`--bg`, `--accent1`, `--primary`…) pointent vers ces rôles.
+Couleurs centralisées dans `:root` de `css/style.css`, **nommées par rôle**, dérivées du seed orange `#E8590C` de l'app. Le site est **clair et doux** (crème chaud, arrondis, ombres diffuses, halos pêche), aligné sur le thème clair de l'app. Police **Nunito** (Google Fonts, chargée via `<link>`). Des **alias** rétrocompatibles (`--bg`, `--accent1`, `--primary`…) pointent vers ces rôles.
 
 ```css
 :root {
-  --color-primary: #E8590C;        /* orange seed — marque, CTA, accents */
-  --color-primary-soft: #ffb86b;   /* teinte chaude — titres, survols */
-  --color-surface: #0f1724;        /* surface sombre */
-  --color-surface-glass: rgba(255,255,255,0.05);
-  --color-on-surface: #e8eef7;     /* texte principal */
-  --color-on-surface-muted: #aebccf;
-  --color-outline: rgba(255,255,255,0.10);
+  --color-primary: #E8590C;            /* orange marque — CTA, accents */
+  --color-primary-soft: #f7a977;       /* orange doux — survols, focus */
+  --color-bg: #fbf2ea;                 /* crème chaud (fond) */
+  --color-surface: #ffffff;            /* cartes, panneaux */
+  --color-surface-soft: #fff4ec;
+  --color-on-surface: #5a4a40;         /* texte courant (chaud, jamais noir) */
+  --color-on-surface-strong: #36271e;  /* titres */
+  --color-on-surface-muted: #7c6657;
+  --color-outline: #f1e2d6;
+  --radius: 22px; --radius-pill: 999px;
   /* alias compat : --bg --card --accent1 --accent2 --muted --glass --primary */
 }
 ```
@@ -112,7 +115,7 @@ Couleurs centralisées dans `:root` de `css/style.css`, **nommées par rôle** e
 - ❌ Oublier l'attribut `alt` sur les images
 - ❌ Hardcoder des couleurs au lieu d'utiliser les variables CSS de rôle (`--color-*`)
 - ❌ Écrire `card.style.display` directement depuis `search.js`/`filter.js` — passer par `updateCardVisibility`
-- ❌ Réintroduire des couleurs de thème clair (ex. `#f4f4f4`) sur le fond sombre
+- ❌ Hardcoder des couleurs hors de la palette de rôle (le thème doux dérive entièrement du seed `#E8590C`)
 - ❌ Casser le responsive en utilisant des largeurs fixes en pixels
 
 ## Ajouter une recette (procédure)
