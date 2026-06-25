@@ -51,7 +51,7 @@
 
 .btn:hover{ background:var(--color-primary-hover); }
 
-.recipe-meta{ display:flex; gap:20px; flex-wrap:wrap; color:#dfe9f6; margin-bottom:18px; }
+.recipe-meta{ display:flex; gap:20px; flex-wrap:wrap; color:var(--color-on-surface-muted); margin-bottom:18px; }
 
 .ingredients, .etapes, .notes{
   background: rgba(255,255,255,0.02);

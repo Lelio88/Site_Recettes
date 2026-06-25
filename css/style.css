@@ -8,17 +8,17 @@
   --color-primary-soft:   #ffb86b;   /* teinte chaude claire — titres, liens survol */
   --color-on-primary:     #ffffff;   /* texte sur orange */
 
-  /* Surfaces sombres (base navy éditoriale conservée) */
-  --color-bg-top:         #071025;
-  --color-bg-bottom:      #0a1320;
-  --color-surface:        #0f1724;
+  /* Surfaces sombres CHAUDES (dérivées de l'orange — plus de bleu navy) */
+  --color-bg-top:         #1a120c;
+  --color-bg-bottom:      #221710;
+  --color-surface:        #2b1f17;
   --color-surface-glass:  rgba(255,255,255,0.05);
   --color-surface-soft:   rgba(255,255,255,0.02);
   --color-outline:        rgba(255,255,255,0.10);
 
-  /* Texte (contrastes relevés pour WCAG AA) */
-  --color-on-surface:        #e8eef7;  /* texte principal */
-  --color-on-surface-muted:  #aebccf;  /* texte secondaire */
+  /* Texte chaud (off-white / taupe) */
+  --color-on-surface:        #f4ece4;  /* texte principal */
+  --color-on-surface-muted:  #c8b6a7;  /* texte secondaire */
 
   /* === Alias de compatibilité (anciens noms → rôles) === */
   --bg: var(--color-surface);
@@ -111,7 +111,7 @@ body{
 .card-body{ padding:12px 14px; }
 
 .card-body h3{ margin:0 0 6px 0; color:var(--accent2); }
-.card-body p{ margin:0; color: #d6e3f2; font-size:14px; }
+.card-body p{ margin:0; color: var(--color-on-surface-muted); font-size:14px; }
 
 /* Controls */
 .controls{
@@ -181,7 +181,7 @@ body{
   text-align:center;
   padding:18px;
   margin-top:28px;
-  color:#93a3b9;
+  color:var(--color-on-surface-muted);
   font-size:14px;
 }
 
