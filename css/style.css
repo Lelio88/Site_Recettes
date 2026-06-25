@@ -61,6 +61,35 @@ body{
   -moz-osx-font-smoothing:grayscale;
 }
 
+/* ---- Fond animé « mijotage » : grands halos chauds qui dérivent ----
+   100% CSS, derrière le contenu (z-index:-1), sans interaction (pointer-events:none),
+   uniquement transform (compositor-friendly). Se fige en reduced-motion. */
+body::before, body::after, html::before{
+  content:""; position:fixed; z-index:-1; pointer-events:none;
+  border-radius:50%; will-change:transform;
+}
+body::before{
+  width:62vmax; height:62vmax; top:-20vmax; left:-14vmax; opacity:.6;
+  background:radial-gradient(circle, #ffd9b8 0%, rgba(255,217,184,0) 68%);
+  animation:floatA 24s ease-in-out infinite alternate;
+}
+body::after{
+  width:58vmax; height:58vmax; bottom:-22vmax; right:-16vmax; opacity:.5;
+  background:radial-gradient(circle, #ffc79a 0%, rgba(255,199,154,0) 68%);
+  animation:floatB 30s ease-in-out infinite alternate;
+}
+html::before{
+  width:46vmax; height:46vmax; top:34%; left:42%; opacity:.38;
+  background:radial-gradient(circle, #ffead8 0%, rgba(255,234,216,0) 70%);
+  animation:floatC 36s ease-in-out infinite alternate;
+}
+@keyframes floatA{ to{ transform:translate(14vmax,9vmax) scale(1.18); } }
+@keyframes floatB{ from{ transform:scale(1.12); } to{ transform:translate(-11vmax,-7vmax) scale(1); } }
+@keyframes floatC{ to{ transform:translate(-9vmax,6vmax) scale(1.22); } }
+@media (prefers-reduced-motion: reduce){
+  body::before, body::after, html::before{ animation:none; }
+}
+
 /* Accessibilité : focus doux et visible */
 :focus-visible{ outline:3px solid var(--color-primary-soft); outline-offset:3px; border-radius:12px; }
 input[type="checkbox"]{ accent-color:var(--color-primary); width:17px; height:17px; }
