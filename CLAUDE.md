@@ -17,7 +17,7 @@ Topologie rapide :
 - `index.html` — page d'accueil avec cartes et filtres
 - `recettes/` — une page HTML par recette
 - `css/` — styles globaux (`style.css`), menu (`menu.css`), recettes (`recettes.css`)
-- `js/` — menu responsive (`menu.js`), recherche (`search.js`), filtrage (`filter.js`)
+- `js/` — menu responsive (`menu.js`), visibilité combinée (`visibility.js`), recherche (`search.js`), filtrage (`filter.js`)
 - `assets/` — images et PDF des recettes
 
 ## III. Pile Technologique
@@ -64,5 +64,5 @@ xdg-open index.html      # Linux
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : —
-- **Focus immédiat** : —
+- **Dernier focus** : correctifs + unification DA. Recherche et filtres se **combinent** désormais (logique AND via drapeaux `data-search-hidden`/`data-filter-hidden` lus par `js/visibility.js` ; ne jamais écrire `card.style.display` directement, passer par `updateCardVisibility`). Contraste des filtres réparé (header sombre), overflow 320px corrigé (`flex-wrap`), bouton PDF réparé (`--primary`), focus-visible + ARIA ajoutés. **Tokens CSS de rôle** (`:root` de `style.css`) alignés sur le seed orange `#E8590C` de l'app LLMarmite — DA unifiée, site sombre conservé.
+- **Focus immédiat** : (optionnel) revoir la sémantique du filtrage par groupe (logique OR actuelle : décocher une protéine ne masque pas une carte tant qu'un féculent reste coché).

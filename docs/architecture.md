@@ -45,9 +45,10 @@ Site web statique pur (HTML/CSS/JS vanilla) sans serveur ni build. Chaque recett
 | `css/style.css` | Tokens CSS (`:root`), reset, layout global, cartes, contrôles, footer, responsive |
 | `css/menu.css` | Styles de la navigation principale |
 | `css/recettes.css` | Layout des pages recette (header, galerie, ingrédients, étapes) |
-| `js/menu.js` | Toggle du menu responsive (hamburger) |
-| `js/search.js` | Filtrage des cartes par texte saisi (titre + ingrédients) |
-| `js/filter.js` | Filtrage par checkboxes de catégories (groupes + sous-catégories) |
+| `js/menu.js` | Toggle du menu responsive (hamburger) + `aria-expanded` |
+| `js/visibility.js` | Visibilité **combinée** d'une carte (recherche ET filtres) via `updateCardVisibility` |
+| `js/search.js` | Pose le drapeau `data-search-hidden` (titre + ingrédients) puis délègue l'affichage |
+| `js/filter.js` | Pose le drapeau `data-filter-hidden` (catégories) puis délègue l'affichage |
 
 ## Patterns imposés
 
@@ -62,7 +63,11 @@ Les cartes de `index.html` déclarent leurs métadonnées via `data-*` :
   data-ingredients="poulet,sel,poivre,herbes">
 ```
 
-`filter.js` lit `data-categories` pour afficher/masquer. `search.js` lit `data-title` et `data-ingredients`. Ce contrat ne doit pas être modifié sans adapter les deux scripts.
+`filter.js` lit `data-categories`. `search.js` lit `data-title` et `data-ingredients`. Ce contrat ne doit pas être modifié sans adapter les deux scripts.
+
+### Visibilité combinée (recherche ET filtres)
+
+`search.js` et `filter.js` ne touchent **jamais** `card.style.display` directement : chacun pose son propre drapeau (`data-search-hidden` / `data-filter-hidden`) puis appelle `updateCardVisibility(card)` (`js/visibility.js`), qui masque la carte si **l'un OU l'autre** critère la masque (logique AND entre les deux fonctionnalités). Charger `visibility.js` **avant** `search.js` et `filter.js` — sinon la dernière action écraserait l'autre.
 
 ### Checkboxes hiérarchiques (groupe ↔ enfants)
 
@@ -81,21 +86,20 @@ Chaque page dans `recettes/` suit ce template :
 6. `<section class="notes">` (optionnel)
 7. `<section class="telechargement">` avec lien PDF
 
-### Design tokens
+### Design tokens (DA unifiée avec l'app LLMarmite)
 
-Toutes les couleurs et espacements sont centralisés dans `:root` de `css/style.css` :
+Couleurs centralisées dans `:root` de `css/style.css`, **nommées par rôle** et dérivées du seed orange `#E8590C` de l'app (source de vérité partagée, projetée aussi en `ColorScheme` Flutter — `mobile/lib/src/theme/app_theme.dart`). Le site reste sombre. Des **alias** rétrocompatibles (`--bg`, `--accent1`, `--primary`…) pointent vers ces rôles.
 
 ```css
 :root {
-  --bg: #0f1724;
-  --card: #0b1220;
-  --accent1: #ffb86b;  /* orange, marque/titres */
-  --accent2: #ff6b9f;  /* rose, titres de cartes */
-  --muted: #cbd5e1;    /* texte secondaire */
-  --glass: rgba(255,255,255,0.04);
-  --radius: 14px;
-  --gap: 18px;
-  --maxw: 1100px;
+  --color-primary: #E8590C;        /* orange seed — marque, CTA, accents */
+  --color-primary-soft: #ffb86b;   /* teinte chaude — titres, survols */
+  --color-surface: #0f1724;        /* surface sombre */
+  --color-surface-glass: rgba(255,255,255,0.05);
+  --color-on-surface: #e8eef7;     /* texte principal */
+  --color-on-surface-muted: #aebccf;
+  --color-outline: rgba(255,255,255,0.10);
+  /* alias compat : --bg --card --accent1 --accent2 --muted --glass --primary */
 }
 ```
 
@@ -106,7 +110,9 @@ Toutes les couleurs et espacements sont centralisés dans `:root` de `css/style.
 - ❌ Modifier les noms de `data-*` sans adapter `filter.js` et `search.js`
 - ❌ Ajouter du JS inline dans les fichiers HTML
 - ❌ Oublier l'attribut `alt` sur les images
-- ❌ Hardcoder des couleurs au lieu d'utiliser les variables CSS
+- ❌ Hardcoder des couleurs au lieu d'utiliser les variables CSS de rôle (`--color-*`)
+- ❌ Écrire `card.style.display` directement depuis `search.js`/`filter.js` — passer par `updateCardVisibility`
+- ❌ Réintroduire des couleurs de thème clair (ex. `#f4f4f4`) sur le fond sombre
 - ❌ Casser le responsive en utilisant des largeurs fixes en pixels
 
 ## Ajouter une recette (procédure)

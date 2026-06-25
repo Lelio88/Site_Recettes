@@ -8,16 +8,11 @@ document.addEventListener('DOMContentLoaded', function () {
   function applySearch() {
     var query = input.value.toLowerCase().trim();
     cards.forEach(function (card) {
-      if (!query) {
-        card.dataset.searchHidden = '';
-        card.style.display = '';
-        return;
-      }
-      var title = (card.dataset.title || '').toLowerCase();
-      var ingredients = (card.dataset.ingredients || '').toLowerCase();
-      var match = title.includes(query) || ingredients.includes(query);
+      var match = !query
+        || (card.dataset.title || '').toLowerCase().includes(query)
+        || (card.dataset.ingredients || '').toLowerCase().includes(query);
       card.dataset.searchHidden = match ? '' : 'true';
-      card.style.display = match ? '' : 'none';
+      updateCardVisibility(card);
     });
   }
 

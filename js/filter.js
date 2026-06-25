@@ -18,7 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
         .split(',')
         .map(s => s.trim());
       var match = cats.some(c => active.includes(c));
-      card.style.display = match ? '' : 'none';
+      card.dataset.filterHidden = match ? '' : 'true';
+      updateCardVisibility(card);
     });
   }
 
@@ -48,8 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
   toggles.forEach(btn => {
     btn.addEventListener('click', function () {
       let subFilters = btn.closest('.filter-block').querySelector('.sub-filters');
-      subFilters.classList.toggle('hidden');
-      btn.textContent = subFilters.classList.contains('hidden') ? '+' : '-';
+      var hiddenNow = subFilters.classList.toggle('hidden');
+      btn.textContent = hiddenNow ? '+' : '-';
+      btn.setAttribute('aria-expanded', String(!hiddenNow));
     });
   });
 

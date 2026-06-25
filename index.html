@@ -12,14 +12,11 @@
 
 <body>
   <header class="site-header">
-    <div class="brand">Mon Carnet de Recettes</div>
-    <button id="menu-toggle" class="menu-btn">☰</button>
-    <nav id="main-menu" class="main-menu">
+    <h1 class="brand">Mon Carnet de Recettes</h1>
+    <button id="menu-toggle" class="menu-btn" aria-label="Ouvrir le menu" aria-controls="main-menu" aria-expanded="false">☰</button>
+    <nav id="main-menu" class="main-menu" aria-label="Navigation principale">
       <ul>
-        <li><a href="#entrees">Entrées</a></li>
-        <li><a href="#plats">Plats</a></li>
-        <li><a href="#desserts">Desserts</a></li>
-        <li><a href="#autres">Autres</a></li>
+        <li><a href="#liste-recettes">Recettes</a></li>
       </ul>
     </nav>
   </header>
@@ -34,7 +31,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="viande" checked> Viandes
             </label>
-            <button type="button" class="toggle-subfilters">+</button>
+            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="viande" value="poulet" checked> Poulet</label>
@@ -50,7 +47,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="poisson" checked> Poissons
             </label>
-            <button type="button" class="toggle-subfilters">+</button>
+            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="poisson" value="saumon" checked> Saumon</label>
@@ -62,7 +59,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="legume" checked> Légumes
             </label>
-            <button type="button" class="toggle-subfilters">+</button>
+            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="legume" value="courgette" checked> Courgette</label>
@@ -75,7 +72,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="feculent" checked> Féculents
             </label>
-            <button type="button" class="toggle-subfilters">+</button>
+            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="feculent" value="patate" checked> Patate</label>
@@ -91,23 +88,23 @@
 
     <section id="liste-recettes" class="recette-list">
       <article class="card" data-categories="viande,poulet,patate" data-title="Poulet rôti et pomme de terre au four"
-        data-ingredients="poulet,sel,poivre,herbes">
+        data-ingredients="poulet,patate,ail,parmesan,citron,crème,paprika,herbes">
         <a href="recettes/poulet-patates.html" class="card-link">
           <!--image pouvant être en jpg, jpeg ou png-->
           <img src="assets/poulet-patates.jpg" alt="Photo poulet rôti et patates au four">
           <div class="card-body">
-            <h3>Poulet mariné et patates au four</h3>
-            <p>Avec une sauce miam miam miam.</p>
+            <h3>Poulet rôti et patates au four</h3>
+            <p>Avec une sauce crémeuse au citron.</p>
           </div>
         </a>
       </article>
-      <article class="card" data-categories="poisson,saumon,patate, tomate" data-title="Saumon grillé et pomme de terre au four"
-        data-ingredients="saumon,sel,poivre,herbes">
+      <article class="card" data-categories="poisson,saumon,patate,tomate" data-title="Saumon en papillotte et pomme de terre au four"
+        data-ingredients="saumon,patate,tomate,citron,ciboulette,échalote,crème,beurre">
         <a href="recettes/saumon-patates.html" class="card-link">
-          <img src="assets/saumon-patates.jpg" alt="Photo saumon grillé et patates au four">
+          <img src="assets/saumon-patates.jpg" alt="Photo saumon en papillotte et patates au four">
           <div class="card-body">
-            <h3>Saumon grillé et patates au four</h3>
-            <p>Avec sa sauce au beurre citronné</p>
+            <h3>Saumon en papillotte et patates au four</h3>
+            <p>Avec sa sauce au beurre citronné.</p>
           </div>
         </a>
       </article>
@@ -118,6 +115,7 @@
   <footer class="site-footer">© Mon Carnet — Toutes les recettes en français</footer>
 
   <script src="js/menu.js"></script>
+  <script src="js/visibility.js"></script>
   <script src="js/search.js"></script>
   <script src="js/filter.js"></script>
 </body>

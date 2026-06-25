@@ -1,23 +1,56 @@
 /* style.css - style global */
 :root{
-  --bg:#0f1724;
-  --card:#0b1220;
-  --accent1:#ffb86b;
-  --accent2:#ff6b9f;
-  --muted:#cbd5e1;
-  --glass: rgba(255,255,255,0.04);
+  /* === Tokens de marque — unifiés avec l'app LLMarmite (seed orange #E8590C) ===
+     Source de vérité : ces rôles sont projetés côté Flutter via ColorScheme.fromSeed.
+     Le site reste sombre ; l'accent passe sur l'orange de l'app. */
+  --color-primary:        #E8590C;   /* orange seed (app) — marque, CTA, accents */
+  --color-primary-hover:  #ff6b1f;   /* survol CTA */
+  --color-primary-soft:   #ffb86b;   /* teinte chaude claire — titres, liens survol */
+  --color-on-primary:     #ffffff;   /* texte sur orange */
+
+  /* Surfaces sombres (base navy éditoriale conservée) */
+  --color-bg-top:         #071025;
+  --color-bg-bottom:      #0a1320;
+  --color-surface:        #0f1724;
+  --color-surface-glass:  rgba(255,255,255,0.05);
+  --color-surface-soft:   rgba(255,255,255,0.02);
+  --color-outline:        rgba(255,255,255,0.10);
+
+  /* Texte (contrastes relevés pour WCAG AA) */
+  --color-on-surface:        #e8eef7;  /* texte principal */
+  --color-on-surface-muted:  #aebccf;  /* texte secondaire */
+
+  /* === Alias de compatibilité (anciens noms → rôles) === */
+  --bg: var(--color-surface);
+  --card: var(--color-surface);
+  --accent1: var(--color-primary-soft);
+  --accent2: var(--color-primary-soft);
+  --muted: var(--color-on-surface-muted);
+  --glass: var(--color-surface-glass);
+  --primary: var(--color-primary);   /* répare le CTA .btn (recettes.css) */
+
   --radius:14px;
   --gap:18px;
   --maxw:1100px;
 }
 
 *{box-sizing:border-box}
+
+/* Accessibilité : repère clavier visible sur thème sombre */
+:focus-visible{
+  outline:2px solid var(--color-primary-soft);
+  outline-offset:2px;
+  border-radius:4px;
+}
+
+/* Cases à cocher à la couleur de marque (orange seed) */
+input[type="checkbox"]{ accent-color: var(--color-primary); }
 html,body{height:100%}
 body{
   margin:0;
   font-family:Inter, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background:linear-gradient(180deg,#071025 0%, #0a1320 100%);
-  color:var(--muted);
+  background:linear-gradient(180deg, var(--color-bg-top) 0%, var(--color-bg-bottom) 100%);
+  color:var(--color-on-surface);
   -webkit-font-smoothing:antialiased;
   -moz-osx-font-smoothing:grayscale;
 }
@@ -33,7 +66,7 @@ body{
   align-items:center;
   justify-content:space-between;
   padding:14px 18px;
-  background:linear-gradient(90deg, rgba(255,184,107,0.06), rgba(255,107,159,0.03));
+  background:linear-gradient(90deg, rgba(232,89,12,0.10), rgba(232,89,12,0.03));
   border-bottom:1px solid rgba(255,255,255,0.03);
   position:sticky;
   top:0;
@@ -41,6 +74,7 @@ body{
 }
 
 .brand{
+  margin:0;
   font-weight:700;
   color:var(--accent1);
   font-size:18px;
@@ -94,20 +128,19 @@ body{
   border:0;
   min-width:260px;
   background:var(--glass);
-  color:var(--muted);
+  color:var(--color-on-surface);
 }
 
-.filters label{ margin-right:12px; font-size:14px; color:#cbd5e1; }
+.filters label{ margin-right:12px; font-size:14px; color:var(--color-on-surface); }
 
 .filters {
   display: flex;
   flex-wrap: wrap;        /* si trop long, retour à la ligne */
   gap: 12px;              /* espace entre chaque bloc */
-  font-family: sans-serif;
 }
 
 .filter-block {
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-outline);
   border-radius: 6px;
   overflow: hidden;
   display: flex;
@@ -119,13 +152,14 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f4f4f4;
+  background: var(--color-surface-glass);
   padding: 6px 10px;
 }
 
 .toggle-subfilters {
   border: none;
   background: none;
+  color: var(--color-on-surface);
   cursor: pointer;
   font-size: 16px;
   line-height: 1;
@@ -134,6 +168,8 @@ body{
 .sub-filters {
   padding: 6px 10px;
   display: flex;
+  flex-wrap: wrap;   /* évite le débordement horizontal à 320px (Féculents = 6 cases) */
+  gap: 6px;
 }
 
 .sub-filters.hidden {
