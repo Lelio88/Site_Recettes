@@ -17,7 +17,7 @@ Topologie rapide :
 - `index.html` — page d'accueil avec cartes et filtres
 - `recettes/` — une page HTML par recette
 - `css/` — styles globaux (`style.css`), menu (`menu.css`), recettes (`recettes.css`)
-- `js/` — menu responsive (`menu.js`), visibilité combinée (`visibility.js`), recherche (`search.js`), filtrage (`filter.js`)
+- `js/` — menu responsive (`menu.js`), visibilité combinée (`visibility.js`), recherche (`search.js`), filtrage (`filter.js`), fond animé décoratif (`bgfx.js`)
 - `assets/` — images et PDF des recettes
 
 ## III. Pile Technologique

@@ -90,6 +90,49 @@ html::before{
   body::before, body::after, html::before{ animation:none; }
 }
 
+/* ---- Effets de fond générés par js/bgfx.js : bulles, vapeur, ingrédients ----
+   Échelonnés via des animation-delay aléatoires → jamais tous en même temps.
+   Décoratif uniquement (aria-hidden, pointer-events:none), masqué en reduced-motion. */
+.bgfx{ position:fixed; inset:0; z-index:-1; pointer-events:none; overflow:hidden; }
+.bgfx span{ position:absolute; display:block; will-change:transform, opacity; }
+
+.bgfx-bubble{
+  bottom:-40px; width:var(--size); height:var(--size); border-radius:50%;
+  background:radial-gradient(circle at 32% 30%, rgba(255,255,255,.92), rgba(255,210,176,.35));
+  box-shadow:0 0 14px rgba(232,89,12,.10); opacity:0;
+  animation-name:bgfx-rise; animation-timing-function:ease-in-out; animation-iteration-count:infinite;
+}
+@keyframes bgfx-rise{
+  0%{ transform:translateY(0) scale(.8); opacity:0; }
+  12%{ opacity:.6; } 80%{ opacity:.5; }
+  100%{ transform:translateY(-80vh) scale(1.1); opacity:0; }
+}
+
+.bgfx-steam{
+  bottom:-60px; width:16px; height:var(--size); border-radius:46%;
+  background:linear-gradient(to top, rgba(255,255,255,0), rgba(255,255,255,.55), rgba(255,255,255,0));
+  filter:blur(6px); opacity:0;
+  animation-name:bgfx-steam; animation-timing-function:ease-in-out; animation-iteration-count:infinite;
+}
+@keyframes bgfx-steam{
+  0%{ transform:translateY(0) translateX(0) scaleY(.7); opacity:0; }
+  15%{ opacity:.5; }
+  50%{ transform:translateY(-32vh) translateX(20px) scaleY(1); }
+  85%{ opacity:.32; }
+  100%{ transform:translateY(-64vh) translateX(-14px) scaleY(1.2); opacity:0; }
+}
+
+.bgfx-food{
+  top:108%; font-size:var(--size); line-height:1; opacity:0; filter:saturate(.9);
+  animation-name:bgfx-float; animation-timing-function:linear; animation-iteration-count:infinite;
+}
+@keyframes bgfx-float{
+  0%{ transform:translateY(0) rotate(0deg); opacity:0; }
+  10%{ opacity:.22; } 90%{ opacity:.22; }
+  100%{ transform:translateY(-130vh) rotate(38deg); opacity:0; }
+}
+@media (prefers-reduced-motion: reduce){ .bgfx{ display:none; } }
+
 /* Accessibilité : focus doux et visible */
 :focus-visible{ outline:3px solid var(--color-primary-soft); outline-offset:3px; border-radius:12px; }
 input[type="checkbox"]{ accent-color:var(--color-primary); width:17px; height:17px; }

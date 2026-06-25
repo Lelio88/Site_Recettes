@@ -49,6 +49,7 @@ Site web statique pur (HTML/CSS/JS vanilla) sans serveur ni build. Chaque recett
 | `js/visibility.js` | Visibilité **combinée** d'une carte (recherche ET filtres) via `updateCardVisibility` |
 | `js/search.js` | Pose le drapeau `data-search-hidden` (titre + ingrédients) puis délègue l'affichage |
 | `js/filter.js` | Pose le drapeau `data-filter-hidden` (catégories) puis délègue l'affichage |
+| `js/bgfx.js` | Effets de fond ambiants (bulles, vapeur, ingrédients) générés avec des délais échelonnés — purement décoratif, `pointer-events:none`, désactivé en `reduced-motion` |
 
 ## Patterns imposés
 
