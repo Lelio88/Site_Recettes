@@ -39,7 +39,10 @@ Site web statique pur (HTML/CSS/JS vanilla) sans serveur ni build. Chaque recett
 
 | Fichier | Rôle |
 |---|---|
-| `index.html` | Page d'accueil : header, filtres, grille de cartes, footer |
+| `index.html` | Page d'accueil : header, filtres, grille de cartes, footer (lien mentions légales) |
+| `mentions-legales.html` | Mentions légales LCEN (éditeur non professionnel, hébergeur GitHub) + déclaration « aucune donnée collectée » ; liée depuis le footer de chaque page |
+| `confidentialite.html` | Politique de confidentialité de l'**app LLMarmite** (pas du site) — URL déclarée sur la fiche Play ; maintenue depuis le dépôt LLMarmite |
+| `assets/fonts/` | Nunito auto-hébergée (woff2 variable latin + latin-ext, licence `OFL.txt`) |
 | `recettes/poulet-patates.html` | Page recette avec galerie, ingrédients, étapes, lien PDF |
 | `recettes/saumon-patates.html` | Idem pour le saumon |
 | `css/style.css` | Tokens CSS (`:root`), reset, layout global, cartes, contrôles, footer, responsive |
@@ -89,7 +92,7 @@ Chaque page dans `recettes/` suit ce template :
 
 ### Design tokens — thème « doux » (clair)
 
-Couleurs centralisées dans `:root` de `css/style.css`, **nommées par rôle**, dérivées du seed orange `#E8590C` de l'app. Le site est **clair et doux** (crème chaud, arrondis, ombres diffuses, halos pêche), aligné sur le thème clair de l'app. Police **Nunito** (Google Fonts, chargée via `<link>`). Des **alias** rétrocompatibles (`--bg`, `--accent1`, `--primary`…) pointent vers ces rôles.
+Couleurs centralisées dans `:root` de `css/style.css`, **nommées par rôle**, dérivées du seed orange `#E8590C` de l'app. Le site est **clair et doux** (crème chaud, arrondis, ombres diffuses, halos pêche), aligné sur le thème clair de l'app. Police **Nunito** auto-hébergée (`@font-face` en tête de `style.css`, fichiers dans `assets/fonts/`) : le site n'appelle aucun service tiers, donc ne transmet l'IP d'aucun visiteur. Les liens du footer restent couleur texte, soulignés — l'orange marque n'atteint que ~3,2:1 sur le crème, insuffisant pour du petit texte (WCAG AA). Des **alias** rétrocompatibles (`--bg`, `--accent1`, `--primary`…) pointent vers ces rôles.
 
 ```css
 :root {

@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Recettes - Mon carnet</title>
   <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/menu.css">
   <link rel="stylesheet" href="css/recettes.css">
@@ -39,7 +36,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="viande" checked> Viandes
             </label>
-            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
+            <button type="button" class="toggle-subfilters" aria-label="Détail des viandes" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="viande" value="poulet" checked> Poulet</label>
@@ -55,7 +52,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="poisson" checked> Poissons
             </label>
-            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
+            <button type="button" class="toggle-subfilters" aria-label="Détail des poissons" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="poisson" value="saumon" checked> Saumon</label>
@@ -67,7 +64,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="legume" checked> Légumes
             </label>
-            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
+            <button type="button" class="toggle-subfilters" aria-label="Détail des légumes" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="legume" value="courgette" checked> Courgette</label>
@@ -80,7 +77,7 @@
             <label>
               <input type="checkbox" class="filter-group" data-group="feculent" checked> Féculents
             </label>
-            <button type="button" class="toggle-subfilters" aria-expanded="false">+</button>
+            <button type="button" class="toggle-subfilters" aria-label="Détail des féculents" aria-expanded="false">+</button>
           </div>
           <div class="sub-filters hidden">
             <label><input type="checkbox" class="filter" data-parent="feculent" value="patate" checked> Patate</label>
@@ -120,7 +117,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">© Mon Carnet — Toutes les recettes en français</footer>
+  <footer class="site-footer">© Mon Carnet — Toutes les recettes en français · <a href="mentions-legales.html">Mentions légales</a></footer>
 
   <script src="js/bgfx.js"></script>
   <script src="js/menu.js"></script>
