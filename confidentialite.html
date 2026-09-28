@@ -12,7 +12,7 @@
 <body>
   <main class="container">
     <h1>LLMarmite — Politique de confidentialité</h1>
-    <p><em>Dernière mise à jour : 28 septembre 2026</em></p>
+    <p><em>Dernière mise à jour : 28 septembre 2026 (gestion des codes d'accès)</em></p>
 
     <p>
       LLMarmite est une application personnelle d'assistance culinaire (proposer une recette à
@@ -42,8 +42,10 @@
         d'informations personnelles. <em>Base légale&nbsp;: ta demande explicite de publication.</em></li>
       <li><strong>Code d'accès</strong> : un code personnel, remis par l'administrateur du serveur,
         permet d'utiliser l'application. Il est rangé chiffré sur ton appareil et joint à chaque
-        requête, uniquement en connexion sécurisée (HTTPS). Le serveur se contente de le comparer à
-        la liste des codes autorisés&nbsp;; il ne l'enregistre dans aucun journal. <em>Base
+        requête, uniquement en connexion sécurisée (HTTPS). Côté serveur, seule une
+        <strong>empreinte</strong> du code est conservée (jamais le code lui-même), avec le
+        <strong>pseudo</strong> que l'administrateur lui a associé et sa date de création, dans un
+        dépôt GitHub privé. Rien de tout cela n'apparaît dans les journaux. <em>Base
         légale&nbsp;: sécuriser l'accès au service (intérêt légitime).</em></li>
       <li><strong>Journaux techniques de l'hébergeur</strong> : comme tout serveur web, l'hébergeur
         enregistre l'adresse IP et l'heure des requêtes, pour la sécurité et le bon fonctionnement du
@@ -66,7 +68,8 @@
       <li><strong>Mistral AI</strong> (France) — modèle d'intelligence artificielle (texte et
         vision)&nbsp;: les ingrédients et les photos envoyés pour analyse transitent par son API.</li>
       <li><strong>GitHub</strong> (GitHub, Inc., États-Unis) — publication et hébergement public des
-        recettes (pages et dépôt).</li>
+        recettes (pages et dépôt)&nbsp;; stockage privé des empreintes de codes d'accès et des
+        pseudos associés.</li>
     </ul>
     <p>
       Ces prestataires traitent les données uniquement pour fournir le service. Render et GitHub
@@ -83,7 +86,8 @@
         l'analyse terminée). Mistral AI les traite selon sa propre politique.</li>
       <li><strong>Recettes publiées</strong> : restent publiques jusqu'à leur retrait.</li>
       <li><strong>Code d'accès</strong> : sur ton appareil jusqu'à ce que tu l'effaces (⚙️ &gt; Code
-        d'accès, champ vide) ou que tu désinstalles l'application.</li>
+        d'accès, champ vide) ou que tu désinstalles l'application. Son empreinte et le pseudo
+        associé sont supprimés du serveur dès que le code est révoqué.</li>
       <li><strong>Journaux de l'hébergeur</strong> : selon la durée de rétention de Render.</li>
     </ul>
 
