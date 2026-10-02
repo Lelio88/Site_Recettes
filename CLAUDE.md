@@ -36,6 +36,7 @@ Topologie rapide :
 4. **Responsive obligatoire** — toute modification visuelle doit fonctionner à 320px et 1440px
 5. **Langue française** — tout contenu visible est en français
 6. **Chaque page porte le lien « Mentions légales »** dans son footer — y compris les pages générées par `LLMarmite/llmarmite/site_publisher.py`
+7. **Robots d'entraînement IA refusés** (décision du 2026-10-02) — chaque page porte `<meta name="tdm-reservation" content="1" />` (réserve de fouille, CPI art. L122-5-3), générateur compris. GitHub Pages ne pose pas d'en-tête, et un `robots.txt` n'est lu qu'à la racine de `lelio88.github.io` : choix assumé de ne pas créer ce dépôt racine, la balise porte seule le refus
 
 ## V. Flux de Travail (Explore → Plan → Code → Verify)
 
