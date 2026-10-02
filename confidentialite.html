@@ -13,7 +13,7 @@
 <body>
   <main class="container">
     <h1>LLMarmite — Politique de confidentialité</h1>
-    <p><em>Dernière mise à jour : 28 septembre 2026 (gestion des codes d'accès)</em></p>
+    <p><em>Dernière mise à jour : 2 octobre 2026 (assistant IA)</em></p>
 
     <p>
       LLMarmite est une application personnelle d'assistance culinaire (proposer une recette à
@@ -48,6 +48,14 @@
         <strong>pseudo</strong> que l'administrateur lui a associé et sa date de création, dans un
         dépôt GitHub privé. Rien de tout cela n'apparaît dans les journaux. <em>Base
         légale&nbsp;: sécuriser l'accès au service (intérêt légitime).</em></li>
+      <li><strong>Assistant IA</strong> (facultatif) : si tu branches un assistant IA (Claude, ChatGPT,
+        Cursor…) sur le carnet, tu l'autorises sur une page du serveur en saisissant ton code d'accès,
+        qui n'est pas conservé. Le serveur garde l'<strong>autorisation</strong>&nbsp;: ton pseudo,
+        l'assistant, le nom qu'il se donne, la date, et une empreinte de ton code calculée avec une clé
+        secrète du serveur (jamais le code lui-même), dans le dépôt GitHub privé. L'assistant peut lire le carnet, composer des
+        listes de courses et ajouter des recettes, publiques comme celles ajoutées depuis
+        l'application&nbsp;; il doit te demander avant d'en publier une sur le site. <em>Base
+        légale&nbsp;: ta demande.</em></li>
       <li><strong>Journaux techniques de l'hébergeur</strong> : comme tout serveur web, l'hébergeur
         enregistre l'adresse IP et l'heure des requêtes, pour la sécurité et le bon fonctionnement du
         service. Ils ne servent à aucun suivi ni profilage. <em>Base légale&nbsp;: intérêt
@@ -73,6 +81,13 @@
         pseudos associés.</li>
     </ul>
     <p>
+      <strong>L'assistant IA que tu choisis de brancher</strong> (par exemple Claude, d'Anthropic, ou
+      ChatGPT, d'OpenAI) reçoit ce que ses outils lisent — recettes du carnet, listes de courses — et
+      ce que tu lui écris, selon les conditions de son éditeur, que tu as acceptées. Ce n'est pas un
+      sous-traitant de LLMarmite&nbsp;: c'est toi qui décides de lui transmettre ces données, et tu
+      peux le révoquer à tout moment.
+    </p>
+    <p>
       Ces prestataires traitent les données uniquement pour fournir le service. Render et GitHub
       étant des sociétés américaines, des données peuvent être accessibles depuis les États-Unis&nbsp;;
       ces transferts reposent sur les garanties qu'ils proposent (Data Privacy Framework UE–États-Unis
@@ -89,6 +104,9 @@
       <li><strong>Code d'accès</strong> : sur ton appareil jusqu'à ce que tu l'effaces (⚙️ &gt; Code
         d'accès, champ vide) ou que tu désinstalles l'application. Son empreinte et le pseudo
         associé sont supprimés du serveur dès que le code est révoqué.</li>
+      <li><strong>Autorisations d'assistant IA</strong> : jusqu'à ce que tu les révoques (⚙️ &gt;
+        Assistant IA &gt; Révoquer), que l'assistant se déconnecte, ou que ton code d'accès soit
+        révoqué.</li>
       <li><strong>Journaux de l'hébergeur</strong> : selon la durée de rétention de Render.</li>
     </ul>
 
