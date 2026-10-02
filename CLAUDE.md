@@ -30,7 +30,7 @@ Topologie rapide :
 
 ## IV. Garde-Fous non négociables
 
-1. **Zéro dépendance, zéro ressource tierce** — pas de npm, bundler ou framework JS ; tout est vanilla. Aucune requête vers un domaine tiers (CDN, Google Fonts, analytics) : tout est servi par le site, sinon l'IP du visiteur part chez un tiers ([`../conformite-securite-guide.md`](../conformite-securite-guide.md))
+1. **Zéro dépendance, zéro ressource tierce** — pas de npm, bundler ou framework JS ; tout est vanilla. Aucune requête vers un domaine tiers (CDN, Google Fonts, analytics) : tout est servi par le site, sinon l'IP du visiteur part chez un tiers ([`../docs/bonnes-pratiques.md`](../docs/bonnes-pratiques.md))
 2. **Pas de JavaScript inline** — tout le JS réside dans `js/`
 3. **Data-attributes comme contrat** — les cartes utilisent `data-categories`, `data-title`, `data-ingredients` pour le filtrage ; ne pas altérer cette interface
 4. **Responsive obligatoire** — toute modification visuelle doit fonctionner à 320px et 1440px
@@ -67,5 +67,5 @@ xdg-open index.html      # Linux
 
 ## VIII. Contexte de Session
 
-- **Dernier focus** : mise en conformité (guide transverse `../conformite-securite-guide.md`) — mentions légales LCEN liées depuis chaque footer, Nunito auto-hébergée (plus aucune requête tierce), boutons « + » des filtres nommés (`aria-label`), liens de footer contrastés (couleur texte, soulignés).
+- **Dernier focus** : mise en conformité (guide transverse `../docs/bonnes-pratiques.md`) — mentions légales LCEN liées depuis chaque footer, Nunito auto-hébergée (plus aucune requête tierce), boutons « + » des filtres nommés (`aria-label`), liens de footer contrastés (couleur texte, soulignés).
 - **Focus immédiat** : (optionnel) revoir la sémantique du filtrage par groupe (logique OR : décocher une protéine ne masque pas une carte tant qu'un féculent reste coché).
