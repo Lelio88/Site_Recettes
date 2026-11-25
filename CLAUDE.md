@@ -19,7 +19,7 @@ Topologie rapide :
 - `css/` — styles globaux (`style.css`), menu (`menu.css`), recettes (`recettes.css`)
 - `js/` — menu responsive (`menu.js`), visibilité combinée (`visibility.js`), recherche (`search.js`), filtrage (`filter.js`), fond animé décoratif (`bgfx.js`)
 - `assets/` — images et PDF des recettes ; `assets/fonts/` — Nunito auto-hébergée
-- `mentions-legales.html` — mentions LCEN du site ; `confidentialite.html` — politique de l'**app** LLMarmite
+- `mentions-legales.html` — mentions LCEN du site ; `confidentialite.html` et `cgu.html` — politique de confidentialité et conditions d'utilisation de l'**app** LLMarmite
 
 ## III. Pile Technologique
 
